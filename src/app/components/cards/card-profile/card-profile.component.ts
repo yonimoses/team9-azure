@@ -1,11 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, Input, OnInit} from '@angular/core';
+import {SearchResult} from '../../navbars/admin-navbar/admin-navbar.component';
+
 
 @Component({
-  selector: "app-card-profile",
-  templateUrl: "./card-profile.component.html",
+  selector: 'app-card-profile',
+  templateUrl: './card-profile.component.html',
 })
 export class CardProfileComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  @Input()
+  result: SearchResult;
+
+  ngOnInit(): void {
+  }
 }

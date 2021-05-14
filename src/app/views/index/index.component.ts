@@ -1,11 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: "app-index",
-  templateUrl: "./index.component.html",
+  selector: 'app-index',
+  templateUrl: './index.component.html',
 })
 export class IndexComponent implements OnInit {
-  constructor() {}
+  constructor(private router:Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.router.navigate(['admin/settings'])
+  }
 }

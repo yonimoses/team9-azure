@@ -49,6 +49,9 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SelectDropDownModule} from 'ngx-select-dropdown';
 
 @NgModule({
   declarations: [
@@ -87,7 +90,8 @@ import {HttpClientModule} from '@angular/common/http';
     LandingComponent,
     ProfileComponent,
   ],
-    imports: [BrowserModule,HttpClientModule, AppRoutingModule, FormsModule],
+    imports: [SelectDropDownModule,BrowserModule,NgxSpinnerModule,BrowserAnimationsModule
+      ,HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

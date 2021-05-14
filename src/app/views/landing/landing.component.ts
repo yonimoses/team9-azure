@@ -1,11 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import {Router, RouterOutlet} from '@angular/router';
 
 @Component({
-  selector: "app-landing",
-  templateUrl: "./landing.component.html",
+  selector: 'app-landing',
+  templateUrl: './landing.component.html',
 })
 export class LandingComponent implements OnInit {
-  constructor() {}
+  constructor(private router:Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.router.navigate(['admin/settings'])
+  }
 }

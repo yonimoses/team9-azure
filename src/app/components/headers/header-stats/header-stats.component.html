@@ -1,58 +1,142 @@
 <!-- Header -->
-<div class="relative bg-red-600 md:pt-32 pb-32 pt-12">
-  <div class="px-4 md:px-10 mx-auto w-full">
-    <div>
-      <!-- Card stats -->
-      <div class="flex flex-wrap">
-        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-          <app-card-stats
-            statSubtitle="TRAFFIC"
-            statTitle="350,897"
-            statArrow="up"
-            statPercent="3.48"
-            statPercentColor="text-emerald-500"
-            statDescripiron="Since last month"
-            statIconName="far fa-chart-bar"
-            statIconColor="bg-red-500"
-          ></app-card-stats>
-        </div>
-        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-          <app-card-stats
-            statSubtitle="NEW USERS"
-            statTitle="2,356"
-            statArrow="down"
-            statPercent="3.48"
-            statPercentColor="text-red-500"
-            statDescripiron="Since last week"
-            statIconName="fas fa-chart-pie"
-            statIconColor="bg-orange-500"
-          ></app-card-stats>
-        </div>
-        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-          <app-card-stats
-            statSubtitle="SALES"
-            statTitle="924"
-            statArrow="down"
-            statPercent="1.10"
-            statPercentColor="text-orange-500"
-            statDescripiron="Since yesterday"
-            statIconName="fas fa-users"
-            statIconColor="bg-pink-500"
-          ></app-card-stats>
-        </div>
-        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-          <app-card-stats
-            statSubtitle="PERFORMANCE"
-            statTitle="49,65%"
-            statArrow="up"
-            statPercent="12"
-            statPercentColor="text-emerald-500"
-            statDescripiron="Since last month"
-            statIconName="fas fa-percent"
-            statIconColor="bg-emerald-500"
-          ></app-card-stats>
+<!--asd {{wrapper}}-->
+
+{{ wrapper | json}}
+<ng-container *ngIf="wrapper">
+  <div class="relative bg-red-600 md:pt-32 pt-12" >
+    <div class="px-4 md:px-10 mx-auto w-full" >
+      <div>
+        <!-- Card stats -->
+        <div class="flex flex-wrap" >
+          <div class="w-full lg:w-6/12 xl:w-6/12 px-4" style=" margin-left: auto;
+    margin-right: auto;">
+            <app-card-stats *ngIf="wrapper.found ;else no_found"
+              statSubtitle="{{wrapper.technology}}"
+              statTitle="{{wrapper.packageName}}"
+              statArrow="{{asGrade()}}"
+              statPercent="{{wrapper.result.popularity}}"
+              statPercentColor="text-emerald-500"
+              statDescripiron="Since last month"
+              statIconName="far fa-chart-bar"
+              statIconColor="bg-red-500"
+            ></app-card-stats>
+
+
+
+
+           <ng-template #no_found >
+             <div class="container mx-auto px-4 h-full"  style=" margin-left: auto;
+    margin-right: auto;">
+               <div class="flex content-center items-center justify-center h-full">
+                 <div class="w-full lg:w-6/12 px-4">
+                   <div
+                     class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
+                   >
+                     <div class="rounded-t mb-0 px-6 py-6">
+                       <div class="text-center mb-3">
+                         <h6 class="text-blueGray-500 text-sm font-bold">Package {{wrapper.packageName}} not found</h6>
+                       </div>
+                       <hr class="mt-6 border-b-1 border-blueGray-300" />
+                     </div>
+                     <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+                       <div class="text-blueGray-400 text-center mb-3 font-bold">
+                         <small>Enter your email and get notified when we got it</small>
+                       </div>
+                       <form>
+                         <div class="relative w-full mb-3">
+                           <label
+                             class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                             htmlFor="grid-password"
+                           >
+                             Email
+                           </label>
+                           <input [(ngModel)]="email"
+                                  [ngModelOptions]="{standalone: true}"
+                             type="email"
+                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                             placeholder="Email"
+                           />
+                         </div>
+                         <div class="text-center mt-6">
+                           <button  (click)="notifyMe()"
+                             class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                             type="button"
+                           >
+                             Notify Me
+                           </button>
+                         </div>
+                       </form>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+           </ng-template>
+
+            {{message}}
+            <ng-template *ngIf="message !== null" >
+              <div class="container mx-auto px-4 h-full"  style=" margin-left: auto;
+    margin-right: auto;">
+                <div class="flex content-center items-center justify-center h-full">
+                  <div class="w-full lg:w-6/12 px-4">
+                    <div
+                      class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
+                    >
+                      <div class="rounded-t mb-0 px-6 py-6">
+                        <div class="text-center mb-3">
+                          <h6 class="text-blueGray-500 text-sm font-bold">{{message}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </ng-template>
+
+
+
+          </div>
+          <!--        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">-->
+          <!--          <app-card-stats-->
+          <!--            statSubtitle="NEW USERS"-->
+          <!--            statTitle="2,356"-->
+          <!--            statArrow="down"-->
+          <!--            statPercent="3.48"-->
+          <!--            statPercentColor="text-red-500"-->
+          <!--            statDescripiron="Since last week"-->
+          <!--            statIconName="fas fa-chart-pie"-->
+          <!--            statIconColor="bg-orange-500"-->
+          <!--          ></app-card-stats>-->
+          <!--        </div>-->
+          <!--        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">-->
+          <!--          <app-card-stats-->
+          <!--            statSubtitle="SALES"-->
+          <!--            statTitle="924"-->
+          <!--            statArrow="down"-->
+          <!--            statPercent="1.10"-->
+          <!--            statPercentColor="text-orange-500"-->
+          <!--            statDescripiron="Since yesterday"-->
+          <!--            statIconName="fas fa-users"-->
+          <!--            statIconColor="bg-pink-500"-->
+          <!--          ></app-card-stats>-->
+          <!--        </div>-->
+          <!--        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">-->
+          <!--          <app-card-stats-->
+          <!--            statSubtitle="PERFORMANCE"-->
+          <!--            statTitle="49,65%"-->
+          <!--            statArrow="up"-->
+          <!--            statPercent="12"-->
+          <!--            statPercentColor="text-emerald-500"-->
+          <!--            statDescripiron="Since last month"-->
+          <!--            statIconName="fas fa-percent"-->
+          <!--            statIconColor="bg-emerald-500"-->
+          <!--          ></app-card-stats>-->
+          <!--        </div>-->
         </div>
       </div>
     </div>
   </div>
-</div>
+
+</ng-container>
