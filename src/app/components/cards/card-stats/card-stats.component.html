@@ -1,30 +1,148 @@
-<div
-  class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg"
->
-  <div class="flex-auto p-4">
-    <div class="flex flex-wrap">
-      <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-        <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-          {{wrapper.technology}}
-        </h5>
-        <span class="font-semibold text-xl text-blueGray-700">
-          {{wrapper.packageName}}
+<!--
+
+{ "found": true, "technology": "NPM",
+"result": { "name": "lodash", "version": "4.17.21", "description": "Lodash modular utilities."
+
+
+
+, "repo": "https://github.com/lodash/lodash",
+
+
+"popularity": 0.9756403770806719, "quality": 0.6066489342132282, "github":
+
+
+{ "github_repo_name": "lodash", "issues_closed": 4905, "stargazers": 49342, "open_issues_count": 222,
+"created_at": "07/04/2012, 04:11:46", "watchers_count": 49342, "forks_count": 5710, "archived": false },
+"downloads": 1890621629, "vulns": { "medium": 5, "low": 2 }, "stackoverflow": 6204, "score": "B" } }
+
+
+
+-->
+
+{{wrapper | json}}
+<div class="courses-container">
+  <div class="course">
+    <div class="course-preview">
+      <h6>{{wrapper.result.name}} {{wrapper.result.version}}</h6>
+      <h2>{{wrapper.result.description}}</h2>
+
+
+      <span
+        class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-red-600 bg-red-200 uppercase last:mr-0 mr-1">
+          {{wrapper.result.popularity  | asFormattedNumber}} popularity
         </span>
+      <span
+        class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-red-600 bg-red-200 uppercase last:mr-0 mr-1">
+          {{wrapper.result.quality  | asFormattedNumber}} quality
+        </span>
+      <a href="#">Go to  {{wrapper.result.github.github_repo_name}} repository<i
+        class="fas fa-chevron-right"></i>{{wrapper.result.repo}}</a>
+
+
+
+    </div>
+    <div class="course-info">
+      <div class="progress-container">
+        <div class="progress"></div>
+        <span class="progress-text">
+					6/9 Challenges
+				</span>
       </div>
-      <div class="relative w-auto pl-4 flex-initial">
-        <div
-          class="absolute top-0 w-full h-full bg-blueGray-800 bg-no-repeat bg-full {{wrapper.technology + '-bg'}}"
-          style=""
-        ></div>
+      <h6>VULNERABILITIES</h6>
+      <h2>
+        <span *ngIf="wrapper.result.vulns.high && wrapper.result.vulns.high > 0"
+              class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-red-600 bg-red-200 uppercase last:mr-0 mr-1">
+          {{wrapper.result.vulns.high}} High
+        </span>
+        <span *ngIf="wrapper.result.vulns.medium && wrapper.result.vulns.medium > 0"
+              class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-orange-600 bg-orange-200 uppercase last:mr-0 mr-1">          {{wrapper.result.vulns.medium}}
+          Medium
+        </span>
+        <span *ngIf="wrapper.result.vulns.low && wrapper.result.vulns.low > 0"
+              class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-emerald-600 bg-emerald-200 uppercase last:mr-0 mr-1">
+          {{wrapper.result.vulns.low}} Low
+        </span>
+      </h2>
+      <h6>INFO</h6>
+
+      <h2>
+        <span
+          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-lightBlue-600 bg-lightBlue-200 uppercase last:mr-0 mr-1">
+          {{wrapper.result.downloads  | asFormattedNumber}} downloads
+        </span>
+        <span
+          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-lightBlue-600 bg-lightBlue-200 uppercase last:mr-0 mr-1">
+          {{wrapper.result.github.stargazers  | asFormattedNumber}} stargazers
+        </span>
+        <span
+          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-lightBlue-600 bg-lightBlue-200 uppercase last:mr-0 mr-1">
+          {{wrapper.result.github.forks_count  | asFormattedNumber}} forks
+        </span>
+        <span
+          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-lightBlue-600 bg-lightBlue-200 uppercase last:mr-0 mr-1">
+          {{wrapper.result.github.watchers_count | asFormattedNumber}} watchers
+        </span>
+
+        <span
+          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-lightBlue-600 bg-lightBlue-200 uppercase last:mr-0 mr-1">
+          {{wrapper.result.stackoverflow  | asFormattedNumber}} stackoverflow
+        </span>
+      </h2>
+      <div class="flex-row">
+        asd
+      </div>
+      <div class="SCORE {{'SCORE-' + wrapper.result.score}}" >
+
+        {{wrapper.result.score}} SCORE
+<!--          <span-->
+<!--            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-lightBlue-600 bg-lightBlue-200 uppercase last:mr-0 mr-1">-->
+<!--         -->
+<!--        </span>-->
       </div>
     </div>
-    <p class="text-sm text-blueGray-400 mt-4">
-      <span class="mr-2" [ngClass]="'statPercentColor'">
-        <i
-          [ngClass]="'fas fa-arrow-up'"></i>
-        asd%
-      </span>
-      <span class="whitespace-nowrap">asd</span>
-    </p>
   </div>
 </div>
+
+<!--&lt;!&ndash; SOCIAL PANEL HTML &ndash;&gt;-->
+<!--<div class="social-panel-container">-->
+<!--  <div class="social-panel">-->
+<!--    <p>Created with <i class="fa fa-heart"></i> by-->
+<!--      <a target="_blank" href="https://florin-pop.com">Florin Pop</a></p>-->
+<!--    <button class="close-btn"><i class="fas fa-times"></i></button>-->
+<!--    <h4>Get in touch on</h4>-->
+<!--    <ul>-->
+<!--      <li>-->
+<!--        <a href="https://www.patreon.com/florinpop17" target="_blank">-->
+<!--          <i class="fab fa-discord"></i>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="https://twitter.com/florinpop1705" target="_blank">-->
+<!--          <i class="fab fa-twitter"></i>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="https://linkedin.com/in/florinpop17" target="_blank">-->
+<!--          <i class="fab fa-linkedin"></i>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="https://facebook.com/florinpop17" target="_blank">-->
+<!--          <i class="fab fa-facebook"></i>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a href="https://instagram.com/florinpop17" target="_blank">-->
+<!--          <i class="fab fa-instagram"></i>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<button class="floating-btn">-->
+<!--  Get in Touch-->
+<!--</button>-->
+
+<!--<div class="floating-text">-->
+<!--  Part of <a href="https://florin-pop.com/blog/2019/09/100-days-100-projects" target="_blank">#100Days100Projects</a>-->
+<!--</div>-->

@@ -54,9 +54,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SelectDropDownModule} from 'ngx-select-dropdown';
 import {CardWelcomeComponent} from './components/cards/card-stats/card-welcome.component';
 import {CardNotFoundComponent} from './components/cards/card-stats/card-not-found.component';
+import {FormatNumberPipe} from './components/cards/card-stats/format.number.pipe';
 
 @NgModule({
   declarations: [
+    FormatNumberPipe,
     AppComponent,
     DashboardComponent,
     CardBarChartComponent,

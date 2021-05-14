@@ -4,6 +4,7 @@ import {SearchResultWrapper} from '../../navbars/admin-navbar/admin-navbar.compo
 @Component({
   selector: 'app-card-stats',
   templateUrl: './card-stats.component.html',
+  styleUrls : ['card.scss']
 })
 export class CardStatsComponent implements OnInit {
 
