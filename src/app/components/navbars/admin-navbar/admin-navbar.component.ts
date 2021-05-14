@@ -54,8 +54,9 @@ export class AdminNavbarComponent implements OnInit {
 
   SEARCH_URL = 'https://raw.githubusercontent.com/yonimoses/team9-azure/main/data.json';
   SEND_MAIL_URL = 'https://raw.githubusercontent.com/yonimoses/team9-azure/main/daata.json';
-  packageName: string;
+  packageName = '';
   technology = 'NPM';
+  showError = false;
   loading = false;
 
   @Output()
@@ -72,7 +73,7 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   doSearch(): Observable<SearchResult> {
-    return this.http.get<SearchResult>('https://raw.githubusercontent.com/yonimoses/team9-azure/main/data.json', {
+    return this.http.get<SearchResult>('https://raw.githubusercontent.com/yonimoses/team9-azure/main/dasta.json', {
       params: new HttpParams().set('test', this.packageName)
     })
   }
@@ -80,6 +81,9 @@ export class AdminNavbarComponent implements OnInit {
 
   search() {
     console.log('Searching for ' + this.packageName);
+      this.showError = (this.packageName === '');
+      if(this.showError)
+        return;
     // let delayedObservable = Observable.of(this.doSearch()).delay(1000);
     // delayedObservable.subscribe(data => console.log(data));
 
@@ -122,7 +126,8 @@ export class AdminNavbarComponent implements OnInit {
     //     console.log('At this point the success or error callbacks has been completed.');
     //   });
 
-    this.http.get<SearchResult>(this.SEARCH_URL + '?packageName=' + this.packageName + '&technology=' + this.technology).subscribe(res => {
+    const dummy = this.SEARCH_URL + (this.packageName === 'a' ? + '.dummy' : '');
+    this.http.get<SearchResult>(dummy + '?packageName=' + this.packageName + '&technology=' + this.technology+ '&_random=' +Math.random()).subscribe(res => {
       console.log('res: ', res);
       this.wrapper = {
         found: true,
