@@ -44,19 +44,23 @@ export interface SearchResultWrapper {
 @Component({
   selector: 'app-admin-navbar',
   templateUrl: './admin-navbar.component.html',
+  styleUrls: ['./admin-navbar.scss']
+
 })
 export class AdminNavbarComponent implements OnInit {
 
   constructor(private http: HttpClient, private spinner: NgxSpinnerService) {
   }
 
-  SEARCH_URL = 'https://raw.githubusercontent.com/yonimoses/team9-azure/main/daata.json';
+  SEARCH_URL = 'https://raw.githubusercontent.com/yonimoses/team9-azure/main/data.json';
   SEND_MAIL_URL = 'https://raw.githubusercontent.com/yonimoses/team9-azure/main/daata.json';
   packageName: string;
   technology = 'NPM';
+  loading = false;
 
   @Output()
   public onSearchResult: EventEmitter<SearchResultWrapper> = new EventEmitter<SearchResultWrapper>();
+  public wrapper: SearchResultWrapper;
   technologyModel = ['NPM', 'JAVA','DOCKER', 'PYTHON'];
 
 
@@ -68,7 +72,7 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   doSearch(): Observable<SearchResult> {
-    return this.http.get<SearchResult>('https://raw.githubusercontent.com/yonimoses/team9-azure/main/daata.json', {
+    return this.http.get<SearchResult>('https://raw.githubusercontent.com/yonimoses/team9-azure/main/data.json', {
       params: new HttpParams().set('test', this.packageName)
     })
   }
@@ -79,7 +83,7 @@ export class AdminNavbarComponent implements OnInit {
     // let delayedObservable = Observable.of(this.doSearch()).delay(1000);
     // delayedObservable.subscribe(data => console.log(data));
 
-    this.onSearchResult.emit(null);
+    this.loading = true;
     this.spinner.show();
     //
     // this.http.get<SearchResult>('https://raw.githubusercontent.com/yonimoses/team9-azure/main/daasta.json', {
@@ -120,20 +124,23 @@ export class AdminNavbarComponent implements OnInit {
 
     this.http.get<SearchResult>(this.SEARCH_URL + '?packageName=' + this.packageName + '&technology=' + this.technology).subscribe(res => {
       console.log('res: ', res);
-      this.onSearchResult.emit({
+      this.wrapper = {
         found: true,
         packageName: this.packageName,
         technology: this.technology,
         result: res
-      });
+      };
+      this.loading = false;
+
       this.spinner.hide();
     }, error => {
-      this.onSearchResult.emit({
+      this.wrapper = {
         found: false,
         technology: this.technology,
         packageName: this.packageName,
         result: null
-      });
+      };
+      this.loading = false;
       this.spinner.hide();
       console.log('error', error);
     });

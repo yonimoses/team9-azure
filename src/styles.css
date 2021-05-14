@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.npm-bg{
+  background-image: url('assets/img/logos/npm.svg')
+}
+.python-bg{
+  background-image: url('assets/img/logos/python.svg')
+}
+.java-bg{
+  background-image: url('assets/img/logos/java.svg')
+}
+.docker-bg{
+  background-image: url('assets/img/logos/docker.svg')
+}

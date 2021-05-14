@@ -52,6 +52,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SelectDropDownModule} from 'ngx-select-dropdown';
+import {CardWelcomeComponent} from './components/cards/card-stats/card-welcome.component';
+import {CardNotFoundComponent} from './components/cards/card-stats/card-not-found.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import {SelectDropDownModule} from 'ngx-select-dropdown';
     CardProfileComponent,
     CardSettingsComponent,
     CardSocialTrafficComponent,
+    CardNotFoundComponent,
     CardStatsComponent,
+    CardWelcomeComponent,
     CardTableComponent,
     HeaderStatsComponent,
     MapExampleComponent,

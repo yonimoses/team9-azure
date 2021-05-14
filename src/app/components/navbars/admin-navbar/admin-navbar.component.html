@@ -1,58 +1,128 @@
 <!-- Navbar -->
 <ngx-spinner></ngx-spinner>
-
-<nav
-  class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
-  <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
-    <!-- Brand -->
-    <a
-      class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-      href="#pablo"
-    >Core team</a
-    >
-    <form class="md:flex hidden flex-row flex-wrap items-middle mr-3" style="width: 100%">
-      <div class="rounded-t mb-0 px-6 py-6" style="width: 100%">
-        <div class="text-center flex justify-between">
-          <div class="relative flex w-full flex-wrap items-stretch">
+<div class="grid-container bg-red-600">
+  <div class="header">
+    <div class="welcome text-center" style="padding-bottom: 5px;padding-top: 10px" >
+      <h2 class="font-semibold text-4xl text-white"> CloudVision - Born to be secure</h2>
+      <h5 class="text-2xl text-white">Search for a package</h5>
+    </div>
+    <div class="search">
+      <form class="md:flex hidden flex-row flex-wrap items-middle mr-3" style="width: 100%">
+        <div class="rounded-t mb-0 px-6 py-6" style="width: 100%">
+          <div class="text-center flex justify-between">
+            <div class="relative flex w-full flex-wrap items-stretch">
             <span
               class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
               <i class="fas fa-search"></i>
             </span>
-            <input type="text" [(ngModel)]="packageName" [ngModelOptions]="{standalone: true}"
-                   placeholder="Search here..."
-                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
+              <input type="text" [(ngModel)]="packageName" [ngModelOptions]="{standalone: true}"
+                     placeholder="Search here..."
+                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
+            </div>
+            <div class="relative flex flex-wrap items-stretch" style="padding-left: 5px;padding-right: 5px">
+              <select class="rounded bg-transparent rounded text-base items-center justify-center "
+                      [(ngModel)]="technology"
+                      [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let c of technologyModel" [ngValue]="c">{{c}}</option>
+              </select>
+            </div>
+            <button (click)="search()"
+                    class="bg-blueGray-800 text-white active:bg-blueGray-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                    type="button">
+              Search
+            </button>
           </div>
-          <div class="relative flex flex-wrap items-stretch" style="padding-left: 5px;padding-right: 5px">
-            <select class="rounded bg-transparent rounded text-base items-center justify-center " [(ngModel)]="technology"
-                    [ngModelOptions]="{standalone: true}">
-              <option *ngFor="let c of technologyModel" [ngValue]="c">{{c}}</option>
-            </select>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <ng-container *ngIf="!loading">
+    <div class="search-results" *ngIf="wrapper && wrapper.found">
+      <div class="result-card">
+        <div class="relative bg-red-600 md:pt-32 pt-12">
+          <div class="px-4 md:px-10 mx-auto w-full">
+            <div>
+              <!-- Card stats -->
+              <div class="flex flex-wrap">
+                <div class="w-full lg:w-6/12 xl:w-6/12 px-4" style=" margin-left: auto;margin-right: auto;">
+                  <app-card-stats [wrapper]="wrapper"></app-card-stats>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <!--        <ngx-select-dropdown (change)="technologyChanged($event)" [multiple]="false" [options]="technologyModel" ></ngx-select-dropdown>-->
-
-
-          <!--        <select name="cars" id="cars">-->
-          <!--          <option value="volvo">Volvo</option>-->
-          <!--          <option value="saab">Saab</option>-->
-          <!--          <option value="mercedes">Mercedes</option>-->
-          <!--          <option value="audi">Audi</option>-->
-          <!--        </select> &nbsp;-->
-
-          <!--        <ul class="flex-col md:flex-row list-none items-center hidden md:flex">-->
-          <!--          <app-user-dropdown class="block"></app-user-dropdown>-->
-          <!--        </ul>-->
-          <button (click)="search()"
-                  class="bg-blueGray-800 text-white active:bg-blueGray-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                  type="button">
-            Search
-          </button>
         </div>
       </div>
+    </div>
 
-    </form>
+    <div class="search-results" *ngIf="wrapper && !wrapper.found">
+      <div class="result-card">
+        <div class="relative bg-red-600 md:pt-32 pt-12">
+          <div class="px-4 md:px-10 mx-auto w-full">
+            <div>
+              <!-- Card stats -->
+              <div class="flex flex-wrap">
+                <div class="w-full lg:w-6/12 xl:w-6/12 px-4" style=" margin-left: auto;margin-right: auto;">
+                  <app-card-not-found [wrapper]="wrapper"></app-card-not-found>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+</div>
 
 
-  </div>
+<!--<div class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">-->
+<!--  <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">-->
+<!--    &lt;!&ndash; Brand &ndash;&gt;-->
+<!--    <a class="text-white text-sm uppercase hidden lg:inline-block font-semibold" href="mailto:devops@poalim.co.il">Core team</a>-->
+<!--    <form class="md:flex hidden flex-row flex-wrap items-middle mr-3" style="width: 100%">-->
+<!--      <div class="rounded-t mb-0 px-6 py-6" style="width: 100%">-->
+<!--        <div class="text-center flex justify-between">-->
+<!--          <div class="relative flex w-full flex-wrap items-stretch">-->
+<!--            <span-->
+<!--              class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">-->
+<!--              <i class="fas fa-search"></i>-->
+<!--            </span>-->
+<!--            <input type="text" [(ngModel)]="packageName" [ngModelOptions]="{standalone: true}"-->
+<!--                   placeholder="Search here..."-->
+<!--                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"/>-->
+<!--          </div>-->
+<!--          <div class="relative flex flex-wrap items-stretch" style="padding-left: 5px;padding-right: 5px">-->
+<!--            <select class="rounded bg-transparent rounded text-base items-center justify-center " [(ngModel)]="technology"-->
+<!--                    [ngModelOptions]="{standalone: true}">-->
+<!--              <option *ngFor="let c of technologyModel" [ngValue]="c">{{c}}</option>-->
+<!--            </select>-->
+<!--          </div>-->
 
-</nav>
+<!--          &lt;!&ndash;        <ngx-select-dropdown (change)="technologyChanged($event)" [multiple]="false" [options]="technologyModel" ></ngx-select-dropdown>&ndash;&gt;-->
+
+
+<!--          &lt;!&ndash;        <select name="cars" id="cars">&ndash;&gt;-->
+<!--          &lt;!&ndash;          <option value="volvo">Volvo</option>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <option value="saab">Saab</option>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <option value="mercedes">Mercedes</option>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <option value="audi">Audi</option>&ndash;&gt;-->
+<!--          &lt;!&ndash;        </select> &nbsp;&ndash;&gt;-->
+
+<!--          &lt;!&ndash;        <ul class="flex-col md:flex-row list-none items-center hidden md:flex">&ndash;&gt;-->
+<!--          &lt;!&ndash;          <app-user-dropdown class="block"></app-user-dropdown>&ndash;&gt;-->
+<!--          &lt;!&ndash;        </ul>&ndash;&gt;-->
+<!--          <button (click)="search()"-->
+<!--                  class="bg-blueGray-800 text-white active:bg-blueGray-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"-->
+<!--                  type="button">-->
+<!--            Search-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </form>-->
+
+
+<!--  </div>-->
+
+<!--</div>-->
