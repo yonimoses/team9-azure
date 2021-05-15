@@ -30,4 +30,7 @@
     ". . .";
   grid-area: search-results;
 }
-.result-card { grid-area: result-card; }
+.result-card {
+  position:relative;
+  top:20px;
+  grid-area: result-card; }
