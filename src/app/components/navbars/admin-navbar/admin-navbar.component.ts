@@ -72,8 +72,8 @@ export class AdminNavbarComponent implements OnInit {
   //
   technologies = [
     { id: 'NPM',thumbnailUrl: 'assets/img/logos/npm.svg', title: 'NPM' },
-    { id: 'DOCKER',thumbnailUrl: 'assets/img/logos/docker.svg', title: 'DOCKER' },
-    { id: 'JAVA', thumbnailUrl: 'assets/img/logos/java.svg', title: 'JAVA' },
+    { id: 'Docker',thumbnailUrl: 'assets/img/logos/docker.svg', title: 'Docker' },
+    { id: 'Maven', thumbnailUrl: 'assets/img/logos/java.svg', title: 'Maven' },
     { id: 'Python',thumbnailUrl: 'assets/img/logos/python.svg', title: 'Python' },
   ];
 
