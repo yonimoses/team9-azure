@@ -29,7 +29,6 @@
         <!-- Card stats -->
         <div class="flex flex-wrap" >
           <div class="w-full  px-4" style=" margin-left: auto;margin-right: auto;">
-            {{ wrapper | json}}
             <app-card-stats *ngIf="wrapper.found ;else no_found" [wrapper]="wrapper"></app-card-stats>
 
 <!--            <app-card-welcome></app-card-welcome>-->
