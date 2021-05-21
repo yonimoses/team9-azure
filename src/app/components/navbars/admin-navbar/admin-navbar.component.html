@@ -27,12 +27,14 @@
                      placeholder="Search here..."
                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
             </div>
-
-            <button (click)="search()"
-                    class="bg-blueGray-800 text-white active:bg-blueGray-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+            <button [class.bg-blueGray-800]="packageName !== ''"
+                    [class.bg-blueGray-600]="packageName === ''"
+                    [attr.disabled]="packageName === '' ? true :null" (click)="search()"
+                    class="bg-blueGray-600 text-white active:bg-blueGray-600 active:bg-blueGray-800 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                     type="button">
               Search
             </button>
+
           </div>
         </div>
         <div *ngIf="showError">
