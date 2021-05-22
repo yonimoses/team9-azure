@@ -1,3 +1,5 @@
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
 /* You can add global styles to this file, and also import other style files */
 .npm-bg{
   background-image: url('assets/img/logos/npm.svg')
@@ -10,4 +12,12 @@
 }
 .docker-bg{
   background-image: url('assets/img/logos/docker.svg')
+}
+
+.ng-select .ng-select-container {
+  min-height: 43px;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+  height: 43px;
 }

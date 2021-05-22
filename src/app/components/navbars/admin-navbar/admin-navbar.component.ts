@@ -63,6 +63,19 @@ export class AdminNavbarComponent implements OnInit {
   public onSearchResult: EventEmitter<SearchResultWrapper> = new EventEmitter<SearchResultWrapper>();
   public wrapper: SearchResultWrapper;
   technologyModel = ['NPM', 'JAVA','DOCKER', 'PYTHON'];
+  // "albumId": 1,
+  // "id": 1,
+  // "title": "accusamus beatae ad facilis cum similique qui sunt",
+  // "url": "https://via.placeholder.com/600/92c952",
+  // "thumbnailUrl": "https://via.placeholder.com/150/92c952"
+  //
+  //
+  technologies = [
+    { id: 'NPM',thumbnailUrl: 'assets/img/logos/npm.svg', title: 'NPM' },
+    { id: 'Docker',thumbnailUrl: 'assets/img/logos/docker.svg', title: 'Docker' },
+    { id: 'Maven', thumbnailUrl: 'assets/img/logos/java.svg', title: 'Maven' },
+    { id: 'Python',thumbnailUrl: 'assets/img/logos/python.svg', title: 'Python' },
+  ];
 
 
 

@@ -1,9 +1,9 @@
 <!-- Navbar -->
 <ngx-spinner></ngx-spinner>
-<div class="grid-container bg-red-600">
+<div class="grid-container bg-lightBlue-500">
   <div class="header">
     <div class="welcome text-center" style="padding-bottom: 5px;padding-top: 10px">
-      <h2 class="font-semibold text-4xl text-white">Some text</h2>
+      <h2 class="font-semibold text-4xl text-white">Package rating</h2>
       <h5 class="text-2xl text-white">Search for a package</h5>
     </div>
     <div class="search">
@@ -11,12 +11,113 @@
         <div class="rounded-t mb-0 px-6 py-6" style="width: 100%">
           <div class="text-center flex justify-between">
 
-            <div class="relative flex flex-wrap items-stretch" style="padding-left: 5px;padding-right: 5px">
-              <select class="rounded bg-transparent rounded text-base items-center justify-center "
-                      [(ngModel)]="technology"
-                      [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let c of technologyModel" [ngValue]="c">{{c}}</option>
-              </select>
+            <div class="relative flex flex-wrap items-stretch"
+                 style="padding-left: 5px;padding-right: 5px;min-width: 200px">
+              <!--              <select class="rounded bg-transparent rounded text-base items-center justify-center "-->
+              <!--                      [(ngModel)]="technology"-->
+              <!--                      [ngModelOptions]="{standalone: true}">-->
+              <!--                <option *ngFor="let c of technologyModel" [ngValue]="c">{{c}}</option>-->
+              <!--              </select>-->
+
+              <!--              <ng-select [items]="technologies"-->
+              <!--                         bindLabel="name"-->
+              <!--                         bindValue="thumbnailUrl"-->
+              <!--                         placeholder="Select Techno"-->
+              <!--                         labelForId="name"-->
+              <!--                        [(ngModel)]="technology">-->
+              <!--                <ng-template ng-label-tmp let-item="item">-->
+              <!--                  <img height="15" width="15" [src]="item.thumbnailUrl"/>-->
+              <!--                  <span>{{item.title}}</span>-->
+              <!--                </ng-template>-->
+              <!--                <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">-->
+              <!--                  <img height="15" width="15" [src]="item.thumbnailUrl"/>-->
+              <!--                  <span [ngOptionHighlight]="search">{{item.title}}</span>-->
+              <!--                </ng-template>-->
+              <!--              </ng-select>-->
+
+
+              <!--              {{technology}}-->
+              <ng-select class="relative flex w-full flex-wrap items-stretch" style="width: 100%;height: 100%"
+                         [clearable]="false" [items]="technologies"
+                         bindLabel="title"
+                         bindValue="id"
+                         labelForId="technologies"
+                         [ngModelOptions]="{standalone: true}" [(ngModel)]="technology">
+                <ng-template ng-label-tmp let-item="item">
+                  <div style="text-align: left">
+                    <img style="display:inline-block;" height="20" width="20" [src]="item.thumbnailUrl"/>
+                    <span>&nbsp;{{item.title}}</span>
+                  </div>
+
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                  <div style="text-align: left">
+                    <img style="display:inline-block;" height="20" width="20" [src]="item.thumbnailUrl"/>
+                    <span>&nbsp;{{item.title}}</span>
+                  </div>
+                </ng-template>
+              </ng-select>
+
+
+              <!--              -->
+              <!--              <ng-select [items]="technologies"-->
+              <!--                         bindLabel="name"-->
+              <!--                         bindValue="imageUrl"-->
+              <!--                         placeholder="Select Technology"-->
+              <!--                         labelForId="name"-->
+              <!--                         [ngModelOptions]="{standalone: true}" [(ngModel)]="technology" >-->
+              <!--                <ng-template ng-label-tmp let-tech="tech">-->
+              <!--                  <img height="15" width="15" [src]="tech.imageUrl"/>-->
+              <!--                  <span>{{tech.name}}</span>-->
+              <!--                </ng-template>-->
+              <!--                <ng-template ng-option-tmp let-tech="tech" let-index="index" let-search="searchTerm">-->
+              <!--                  <img height="15" width="15" [src]="tech.imageUrl"/>-->
+              <!--                </ng-template>-->
+              <!--              </ng-select>-->
+
+
+              <!--              <ng-select appearance="outline" [ngModelOptions]="{standalone: true}" [(ngModel)]="technology" >-->
+              <!--                <ng-option >-->
+              <!--                  <img  [src]="'assets/img/logos/npm.svg'" width="20px" height="20px"/>-->
+              <!--                  NPM-->
+              <!--                </ng-option>-->
+
+              <!--                <ng-option >-->
+              <!--                  <img  [src]="'assets/img/logos/java.svg'" width="20px" height="20px"/>-->
+              <!--                  Java-->
+              <!--                </ng-option>-->
+
+              <!--                <ng-option >-->
+              <!--                  <img  [src]="'assets/img/logos/docker.svg'" width="20px" height="20px"/>-->
+              <!--                  Docker-->
+              <!--                </ng-option>-->
+
+              <!--                <ng-option >-->
+              <!--                  <img  [src]="'assets/img/logos/python.svg'" width="20px" height="20px"/>-->
+              <!--                  Python-->
+              <!--                </ng-option>-->
+              <!--&lt;!&ndash;                <ng-option value="spidey">&ndash;&gt;-->
+              <!--&lt;!&ndash;                  <img src="{{basePath}}/assets/spidey.png" width="20px" height="20px"/>&ndash;&gt;-->
+              <!--&lt;!&ndash;                  Spider-Man & Goblin&ndash;&gt;-->
+              <!--&lt;!&ndash;                </ng-option>&ndash;&gt;-->
+              <!--&lt;!&ndash;                <ng-option value="thor">&ndash;&gt;-->
+              <!--&lt;!&ndash;                  <img src="{{basePath}}/assets/thor.png" width="20px" height="20px"/>&ndash;&gt;-->
+              <!--&lt;!&ndash;                  Thor&ndash;&gt;-->
+              <!--&lt;!&ndash;                </ng-option>&ndash;&gt;-->
+              <!--              </ng-select>-->
+
+
+              <!--              <ng-select [(ngModel)]="technology" bindLabel="name" bindValue="name">>-->
+
+              <!--                <ng-template ng-label-tmp let-tech="tech">-->
+              <!--                  <img height="15" width="15" [src]="'assets/img/logos/' + tech.name.toUpperCase() + '.svg'"/>-->
+              <!--                  {{tech.name}}-->
+              <!--                </ng-template>-->
+
+              <!--&lt;!&ndash;                <ng-option *ngFor="let tech of technologies" [value]="tech.name">{{tech.name}}</ng-option>&ndash;&gt;-->
+              <!--              </ng-select>-->
+
+
             </div>
             <div class="relative flex w-full flex-wrap items-stretch">
             <span
@@ -27,17 +128,20 @@
                      placeholder="Search here..."
                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"/>
             </div>
-
-            <button (click)="search()"
-                    class="bg-blueGray-800 text-white active:bg-blueGray-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+            <button style="margin-left: 5px;" [class.bg-red-600]="packageName !== ''"
+                    [class.bg-red-800]="packageName === ''"
+                    [attr.disabled]="packageName === '' ? true :null" (click)="search()"
+                    class="bg-red-680 text-white active:bg-red-800 active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                     type="button">
               Search
             </button>
+
           </div>
         </div>
         <div *ngIf="showError">
           <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
-            <span class="text-white text-sm uppercase hidden lg:inline-block font-semibold">Please enter a package name</span>
+            <span
+              class="text-white text-sm uppercase hidden lg:inline-block font-semibold">Please enter a package name</span>
           </div>
         </div>
 
@@ -47,7 +151,7 @@
   <ng-container *ngIf="!loading">
     <div class="search-results" *ngIf="wrapper && wrapper.found">
       <div class="result-card">
-        <div class="relative bg-red-600 md:pt-32 pt-12">
+        <div class="relative md:pt-32 pt-12">
           <div class="px-4 md:px-10 mx-auto w-full">
             <div>
               <!-- Card stats -->
@@ -64,7 +168,7 @@
 
     <div class="search-results" *ngIf="wrapper && !wrapper.found">
       <div class="result-card">
-        <div class="relative bg-red-600 md:pt-32 pt-12">
+        <div class="relative md:pt-32 pt-12">
           <div class="px-4 md:px-10 mx-auto w-full">
             <div>
               <!-- Card stats -->

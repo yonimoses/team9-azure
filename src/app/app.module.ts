@@ -49,6 +49,7 @@ import {SelectDropDownModule} from 'ngx-select-dropdown';
 import {CardWelcomeComponent} from './components/cards/card-stats/card-welcome.component';
 import {CardNotFoundComponent} from './components/cards/card-stats/card-not-found.component';
 import {FormatNumberPipe} from './components/cards/card-stats/format.number.pipe';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -84,8 +85,9 @@ import {FormatNumberPipe} from './components/cards/card-stats/format.number.pipe
     LandingComponent,
     ProfileComponent,
   ],
-    imports: [SelectDropDownModule,BrowserModule,NgxSpinnerModule,BrowserAnimationsModule
-      ,HttpClientModule, AppRoutingModule, FormsModule],
+    imports: [
+      SelectDropDownModule,BrowserModule,NgxSpinnerModule,BrowserAnimationsModule
+      ,HttpClientModule, AppRoutingModule, FormsModule, NgSelectModule],
   providers: [],
   bootstrap: [AppComponent],
 })
