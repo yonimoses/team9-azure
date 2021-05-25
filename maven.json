@@ -6,6 +6,7 @@
   "popularity": 0.8,
   "quality": 0.9,
   "numFound": 207,
+  "license": "LGPL",
   "github": {
     "github_repo_name": "poi",
     "issues_closed": 0,
@@ -23,5 +24,5 @@
     "low": 5
   },
   "stackoverflow": 8862,
-  "score": "A"
+  "score": "C"
 }
