@@ -3,6 +3,8 @@
   "version": "5.0.0",
   "description": "",
   "repo": "https://github.com/venkatramanm/poi",
+  "popularity": 0.8,
+  "quality": 0.9,
   "numFound": 207,
   "github": {
     "github_repo_name": "poi",
@@ -14,10 +16,12 @@
     "forks_count": 1,
     "archived": false
   },
+  "downloads": 9764,
   "vulns": {
+    "high": 2,
     "medium": 3,
     "low": 5
   },
   "stackoverflow": 8862,
-  "score": "B"
+  "score": "A"
 }

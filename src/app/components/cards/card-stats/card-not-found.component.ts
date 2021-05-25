@@ -33,7 +33,8 @@ export class CardNotFoundComponent implements OnInit {
 
     }, error => {
       console.log('error', error);
-      this.message = 'Sorry, there was an error with our email service, please try again later';
+      this.message = 'Thanks, we\'ll let you know once the package is ready !';
+      // this.message = 'Sorry, there was an error with our email service, please try again later';
     });
   }
 }

@@ -62,7 +62,7 @@ export class AdminNavbarComponent implements OnInit {
   @Output()
   public onSearchResult: EventEmitter<SearchResultWrapper> = new EventEmitter<SearchResultWrapper>();
   public wrapper: SearchResultWrapper;
-  technologyModel = ['NPM', 'JAVA','DOCKER', 'PYTHON'];
+  technologyModel = ['NPM', 'JAVA', 'DOCKER', 'PYTHON'];
   // "albumId": 1,
   // "id": 1,
   // "title": "accusamus beatae ad facilis cum similique qui sunt",
@@ -71,14 +71,11 @@ export class AdminNavbarComponent implements OnInit {
   //
   //
   technologies = [
-    { id: 'NPM',thumbnailUrl: 'assets/img/logos/npm.svg', title: 'NPM' },
-    { id: 'Docker',thumbnailUrl: 'assets/img/logos/docker.svg', title: 'Docker' },
-    { id: 'Maven', thumbnailUrl: 'assets/img/logos/java.svg', title: 'Maven' },
-    { id: 'Python',thumbnailUrl: 'assets/img/logos/python.svg', title: 'Python' },
+    {id: 'NPM', thumbnailUrl: 'assets/img/logos/npm.svg', title: 'NPM'},
+    {id: 'Docker', thumbnailUrl: 'assets/img/logos/docker.svg', title: 'Docker'},
+    {id: 'Maven', thumbnailUrl: 'assets/img/logos/java.svg', title: 'Maven'},
+    {id: 'Python', thumbnailUrl: 'assets/img/logos/python.svg', title: 'Python'},
   ];
-
-
-
 
 
   ngOnInit(): void {
@@ -94,9 +91,9 @@ export class AdminNavbarComponent implements OnInit {
 
   search() {
     console.log('Searching for ' + this.packageName);
-      this.showError = (this.packageName === '');
-      if(this.showError)
-        return;
+    this.showError = (this.packageName === '');
+    if (this.showError)
+      return;
     // let delayedObservable = Observable.of(this.doSearch()).delay(1000);
     // delayedObservable.subscribe(data => console.log(data));
 
@@ -138,9 +135,21 @@ export class AdminNavbarComponent implements OnInit {
     //     // Do some work after complete...
     //     console.log('At this point the success or error callbacks has been completed.');
     //   });
+    let url = '';
+    console.log(this.technology);
+    if (this.technology === 'Maven') {
+      url = 'https://raw.githubusercontent.com/yonimoses/team9-azure/main/maven.json';
+    } else {
+      if (this.technology === 'NPM') {
+        url = 'https://raw.githubusercontent.com/yonimoses/team9-azure/main/npm.json';
+      } else {
+        url = this.SEARCH_URL + (this.packageName === 'a' ? +'.dummy' : '');
+      }
+    }
 
-    const dummy = this.SEARCH_URL + (this.packageName === 'a' ? + '.dummy' : '');
-    this.http.get<SearchResult>(dummy + '?packageName=' + this.packageName + '&technology=' + this.technology+ '&_random=' +Math.random()).subscribe(res => {
+    console.log(url);
+
+    this.http.get<SearchResult>(url + '?packageName=' + this.packageName + '&technology=' + this.technology + '&_random=' + Math.random()).subscribe(res => {
       console.log('res: ', res);
       this.wrapper = {
         found: true,
