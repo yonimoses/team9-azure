@@ -1,0 +1,23 @@
+{
+  "name": "poi",
+  "version": "5.0.0",
+  "description": "",
+  "repo": "https://github.com/venkatramanm/poi",
+  "numFound": 207,
+  "github": {
+    "github_repo_name": "poi",
+    "issues_closed": 0,
+    "stargazers": 1,
+    "open_issues_count": 0,
+    "created_at": "20/10/2013, 09:22:12",
+    "watchers_count": 1,
+    "forks_count": 1,
+    "archived": false
+  },
+  "vulns": {
+    "medium": 3,
+    "low": 5
+  },
+  "stackoverflow": 8862,
+  "score": "B"
+}
