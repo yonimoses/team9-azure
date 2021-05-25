@@ -1,0 +1,26 @@
+{
+  "name": "lodash",
+  "version": "4.17.21",
+  "description": "Lodash modular utilities.",
+  "repo": "https://github.com/lodash/lodash",
+  "popularity": 0.9756400045102566,
+  "quality": 0.6066533255994598,
+  "license": "MIT",
+  "github": {
+    "github_repo_name": "lodash",
+    "issues_closed": 4910,
+    "stargazers": 49395,
+    "open_issues_count": 221,
+    "created_at": "07/04/2012, 04:11:46",
+    "watchers_count": 49395,
+    "forks_count": 5721,
+    "archived": false
+  },
+  "downloads": 1902321513,
+  "vulns": {
+    "medium": 5,
+    "low": 2
+  },
+  "stackoverflow": 6206,
+  "score": "A"
+}

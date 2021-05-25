@@ -1,0 +1,28 @@
+{
+  "name": "poi",
+  "version": "5.0.0",
+  "description": "Bean Reading and writing from xls using Apache POI",
+  "repo": "https://github.com/venkatramanm/poi",
+  "popularity": 0.8,
+  "quality": 0.9,
+  "numFound": 207,
+  "license": "LGPL",
+  "github": {
+    "github_repo_name": "poi",
+    "issues_closed": 0,
+    "stargazers": 1,
+    "open_issues_count": 0,
+    "created_at": "20/10/2013, 09:22:12",
+    "watchers_count": 1,
+    "forks_count": 1,
+    "archived": false
+  },
+  "downloads": 9764,
+  "vulns": {
+    "high": 2,
+    "medium": 3,
+    "low": 5
+  },
+  "stackoverflow": 8862,
+  "score": "C"
+}
