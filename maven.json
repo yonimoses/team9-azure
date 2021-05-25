@@ -1,7 +1,7 @@
 {
   "name": "poi",
   "version": "5.0.0",
-  "description": "",
+  "description": "Bean Reading and writing from xls using Apache POI",
   "repo": "https://github.com/venkatramanm/poi",
   "popularity": 0.8,
   "quality": 0.9,
